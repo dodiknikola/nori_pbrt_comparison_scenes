@@ -1,0 +1,51 @@
+Integrator "path" "integer maxdepth" [ 65 ] "float rrthreshold" [ 65 ]
+Sampler "random" "integer pixelsamples" [ 1024 ] 
+PixelFilter "triangle" "float xwidth" [ 1.000000 ] "float ywidth" [ 1.000000 ] 
+Film "image" "integer xresolution" [ 720 ] "integer yresolution" [ 720 ] "string filename" [ "blender.exr" ] 
+LookAt 50 -20 50 # eye
+       0 0 0    # look at point
+       0 0 1    # up vector
+Camera "perspective" "float fov" [ 30 ] 
+WorldBegin
+    # Material definitions
+	MakeNamedMaterial "White" "string type" [ "matte" ] "rgb Kd" [ 1 1 1 ] "float sigma" [ 0 ]
+	MakeNamedMaterial "Material" "string type" [ "disney" ]
+        "rgb color" [ 1 0 0 ]
+        "float metallic" [ 1 ]
+        "float roughness" [ 0.5 ]
+        "float sheen" [ 1 ] 
+        "float sheentint" [ 1 ] 
+        "float clearcoat" [ 1 ] 
+        "float clearcoatgloss" [ 1 ] 
+        "float speculartint" [ 0 ] 
+        "float anisotropic" [ 0 ] 
+        "float eta" [ 1.5 ]
+        "float spectrans" [ 0.5 ]
+
+    # Lights
+	# TransformBegin
+    #     Translate 50 -50 50
+	# 	LightSource "point" "rgb I" [ 1591.54943 1591.54943 1591.54943 ] 
+	# TransformEnd
+
+    AttributeBegin
+        AreaLightSource "diffuse" "rgb L" [ 15 15 15 ]
+        Shape "plymesh" "string filename" [ "models/LightPlaneBig.001.ply" ] 
+    AttributeEnd
+
+    # Material object
+    AttributeBegin
+	    NamedMaterial "Material" 
+		Shape "plymesh" "string filename" [ "models/SolidModel.ply" ] 
+    AttributeEnd
+
+    # Rest of the scene
+    AttributeBegin
+	    NamedMaterial "White" 
+		Shape "plymesh" "string filename" [ "models/Base.001.ply" ] 
+		Shape "plymesh" "string filename" [ "models/CoreSolidMaterial.ply" ] 
+		Shape "plymesh" "string filename" [ "models/EnvironmentLetter.ply" ] 
+		Shape "plymesh" "string filename" [ "models/MeasurementRig.001.ply" ] 
+		Shape "plymesh" "string filename" [ "models/TextBase.001.ply" ] 
+    AttributeEnd
+WorldEnd
