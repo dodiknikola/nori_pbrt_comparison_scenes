@@ -3,7 +3,7 @@ import os
 
 # get the path where the blend file is located
 basedir = bpy.path.abspath('//')
-export_to = 'pbrt'
+export_to = 'nori'
 
 # deselect all objects
 bpy.ops.object.select_all(action='DESELECT')    

@@ -39,9 +39,9 @@
 	<mesh type="obj" >
 		<string name="filename" value="models/SolidModel.obj" />
         <bsdf type="disney" id="Material">
-            <color name="baseColor" value="1, 0, 0"/>
-            <float name="metallic" value="1"/>
-            <float name="roughness" value="0.5"/>
+            <color name="baseColor" value="1, 1, 1"/>
+            <float name="metallic" value="0"/>
+            <float name="roughness" value="0.1"/>
             <float name="sheen" value="1"/>
             <float name="sheenTint" value="1"/>
             <float name="clearcoat" value="1"/>
@@ -49,7 +49,8 @@
             <float name="specularTint" value="0"/>
             <float name="anisotropic" value="0"/>
             <float name="eta" value="1.5"/>
-            <float name="specTrans" value="0.5"/>
+            <float name="specTrans" value="0.9"/>
+            <color name="scatterDistance" value="1, 0.5, 0.5"/>
         </bsdf>
 	</mesh>
 
@@ -64,7 +65,12 @@
 	<mesh type="obj" >
 		<string name="filename" value="models/CoreSolidMaterial.obj" />
         <bsdf type="diffuse" id="White">
-            <color name="albedo" value="1, 1, 1"/>
+            <texture type="checkerboard_color" name="albedo">
+                    <point name="delta" value="0, 0"/>
+                    <vector name="scale" value="0.1,0.1"/>
+                    <color name="value1" value="1, 1, 1"/>
+                    <color name="value2" value="0.2,0.2,0.2"/>
+            </texture>
         </bsdf>
 	</mesh>
 
@@ -77,9 +83,14 @@
 
 	<mesh type="obj" >
 		<string name="filename" value="models/MeasurementRig.001.obj" />
-        <bsdf type="diffuse" id="White">
-            <color name="albedo" value="1, 1, 1"/>
-        </bsdf>
+		<bsdf type="diffuse">
+            <texture type="checkerboard_color" name="albedo">
+                    <point name="delta" value="0, 0"/>
+                    <vector name="scale" value="0.01,0.01"/>
+                    <color name="value1" value="0.8,0.8,0.8"/>
+                    <color name="value2" value="0.2,0.2,0.2"/>
+            </texture>
+		</bsdf>
 	</mesh>
 
 	<mesh type="obj">

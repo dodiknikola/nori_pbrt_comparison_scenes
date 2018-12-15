@@ -10,9 +10,9 @@ WorldBegin
     # Material definitions
 	MakeNamedMaterial "White" "string type" [ "matte" ] "rgb Kd" [ 1 1 1 ] "float sigma" [ 0 ]
 	MakeNamedMaterial "Material" "string type" [ "disney" ]
-        "rgb color" [ 1 0 0 ]
-        "float metallic" [ 1 ]
-        "float roughness" [ 0.5 ]
+        "rgb color" [ 1 1 1 ]
+        "float metallic" [ 0 ]
+        "float roughness" [ 0.1 ]
         "float sheen" [ 1 ] 
         "float sheentint" [ 1 ] 
         "float clearcoat" [ 1 ] 
@@ -20,7 +20,8 @@ WorldBegin
         "float speculartint" [ 0 ] 
         "float anisotropic" [ 0 ] 
         "float eta" [ 1.5 ]
-        "float spectrans" [ 0.5 ]
+        "float spectrans" [ 0.9 ]
+        "rgb scatterdistance" [ 1 0.5 0.5 ]
 
     # Lights
 	# TransformBegin
@@ -43,9 +44,21 @@ WorldBegin
     AttributeBegin
 	    NamedMaterial "White" 
 		Shape "plymesh" "string filename" [ "models/Base.001.ply" ] 
-		Shape "plymesh" "string filename" [ "models/CoreSolidMaterial.ply" ] 
 		Shape "plymesh" "string filename" [ "models/EnvironmentLetter.ply" ] 
-		Shape "plymesh" "string filename" [ "models/MeasurementRig.001.ply" ] 
 		Shape "plymesh" "string filename" [ "models/TextBase.001.ply" ] 
+    AttributeEnd
+    AttributeBegin
+        Texture "checks" "spectrum" "checkerboard"
+              "float uscale" [100] "float vscale" [100]
+              "rgb tex1" [.8 .8 .8] "rgb tex2" [.2 .2 .2]
+	    Material "matte" "texture Kd" "checks" 
+		Shape "plymesh" "string filename" [ "models/MeasurementRig.001.ply" ] 
+    AttributeEnd
+    AttributeBegin
+        Texture "checks" "spectrum" "checkerboard"
+              "float uscale" [10] "float vscale" [10]
+              "rgb tex1" [1 1 1] "rgb tex2" [.2 .2 .2]
+	    Material "matte" "texture Kd" "checks" 
+		Shape "plymesh" "string filename" [ "models/CoreSolidMaterial.ply" ] 
     AttributeEnd
 WorldEnd
