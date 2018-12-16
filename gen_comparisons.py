@@ -17,7 +17,21 @@ test_cases = {
         "speculartint" : [ 0 ],
         "anisotropic" : [ 0 ],
         "eta" : [ 1.5 ],
-        "spectrans" : [ 0.9 ],
+        "spectrans" : [ 0 ],
+        "scatterdistance" : [ 1, 0.5, 0.5 ],
+    },
+    "sss_spec" : {
+        "color" : [ 0.917647059, 0.752941176, 0.525490196 ],
+        "metallic" : [ 0 ],
+        "roughness" : [ 0.1 ],
+        "sheen" : [ 0 ],
+        "sheentint" : [ 0 ],
+        "clearcoat" : [ 0 ],
+        "clearcoatgloss" : [ 0 ],
+        "speculartint" : [ 0 ],
+        "anisotropic" : [ 0 ],
+        "eta" : [ 1.5 ],
+        "spectrans" : [ 0.8 ],
         "scatterdistance" : [ 1, 0.5, 0.5 ],
     },
     "metallic" : {
@@ -76,7 +90,7 @@ test_cases = {
         "spectrans" : [ 0 ],
         "scatterdistance" : [ 0, 0, 0 ],
     },
-    "transmission_pure" : {
+    "transmission" : {
         "color" : [ 0.856, 0.166, 0.1 ],
         "metallic" : [ 0 ],
         "roughness" : [ 0 ],
