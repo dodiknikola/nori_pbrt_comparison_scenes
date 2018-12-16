@@ -6,7 +6,7 @@ from templates import pbrt_template, nori_template
 # print(nori_template)
 
 test_cases = {
-    "SSS" : {
+    "sss" : {
         "color" : [ 0.917647059, 0.752941176, 0.525490196 ],
         "metallic" : [ 0 ],
         "roughness" : [ 0.1 ],
@@ -82,6 +82,20 @@ test_cases = {
         "roughness" : [ 0 ],
         "sheen" : [ 0 ],
         "sheentint" : [ 0 ],
+        "clearcoat" : [ 0 ],
+        "clearcoatgloss" : [ 0 ],
+        "speculartint" : [ 0 ],
+        "anisotropic" : [ 0 ],
+        "eta" : [ 1.5 ],
+        "spectrans" : [ 1 ],
+        "scatterdistance" : [ 0, 0, 0 ],
+    },
+    "transmission_clearcoat" : {
+        "color" : [ 0.856, 0.166, 0.1 ],
+        "metallic" : [ 0 ],
+        "roughness" : [ 0 ],
+        "sheen" : [ 0 ],
+        "sheentint" : [ 0 ],
         "clearcoat" : [ 1 ],
         "clearcoatgloss" : [ 0.7 ],
         "speculartint" : [ 0 ],
@@ -96,12 +110,26 @@ test_cases = {
         "roughness" : [ 0.7 ],
         "sheen" : [ 0 ],
         "sheentint" : [ 0 ],
-        "clearcoat" : [ 1 ],
-        "clearcoatgloss" : [ 0.7 ],
+        "clearcoat" : [ 0 ],
+        "clearcoatgloss" : [ 0 ],
         "speculartint" : [ 0 ],
         "anisotropic" : [ 0 ],
         "eta" : [ 1.5 ],
-        "spectrans" : [ 0.8 ],
+        "spectrans" : [ 1 ],
+        "scatterdistance" : [ 0, 0, 0 ],
+    },
+    "all_non_sss" : {
+        "color" : [ 0.856, 0.166, 0.1 ],
+        "metallic" : [ 0.6 ],
+        "roughness" : [ 0.7 ],
+        "sheen" : [ 1 ],
+        "sheentint" : [ 1 ],
+        "clearcoat" : [ 1 ],
+        "clearcoatgloss" : [ 1 ],
+        "speculartint" : [ 1 ],
+        "anisotropic" : [ 0 ],
+        "eta" : [ 1.5 ],
+        "spectrans" : [ 0.6 ],
         "scatterdistance" : [ 0, 0, 0 ],
     },
 }
@@ -153,15 +181,17 @@ def generate_scene(test_case_name, test_case, spp):
     with open(pbrt_filename, "w") as text_file:
         print(pbrt_file, file=text_file)
     pbrt_subprocess = subprocess.Popen(['/home/dfp/work/pbrt-v3/build/pbrt', '/home/dfp/work/blender_mat_test/' + pbrt_filename])
+    pbrt_subprocess.wait()
     nori_subprocess = subprocess.Popen(['/home/dfp/work/nori/build/nori', '/home/dfp/work/blender_mat_test/' + nori_filename])
-    exit_codes = [subprocess.wait() for subprocess in [pbrt_subprocess, nori_subprocess]]
+    nori_subprocess.wait()
 
 
-def generate_all_scenes():
+def generate_all_scenes(spp):
     for test_case_name, test_case in test_cases.items():
-        generate_scene(test_case_name, test_case)
+        generate_scene(test_case_name, test_case, spp)
 
-# generate_all_scenes()
-test_case_name = 'transmission_rough'
-test_case = test_cases[test_case_name]
-generate_scene(test_case_name, test_case, 512)
+generate_all_scenes(1024)
+
+# test_case_name = 'transmission_rough'
+# test_case = test_cases[test_case_name]
+# generate_scene(test_case_name, test_case, 512)
