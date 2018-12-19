@@ -5,23 +5,24 @@ Film "image" "integer xresolution" [ 720 ] "integer yresolution" [ 720 ] "string
 LookAt 50 -20 50 # eye
        0 0 0    # look at point
        0 0 1    # up vector
-Camera "perspective" "float fov" [ 30 ] 
+# Camera "realistic" "string lensfile" [ "wide.22mm.dat" ] "float focusdistance" [ 75 ] "float aperturediameter" [ 8 ] "bool simpleweighting" [ "false" ]
+Camera "perspective" "float focaldistance" [ 73 ] "float lensradius" [ 2 ] "float fov" [ 30 ]
 WorldBegin
     # Material definitions
 	MakeNamedMaterial "White" "string type" [ "matte" ] "rgb Kd" [ 1 1 1 ] "float sigma" [ 0 ]
 	MakeNamedMaterial "Material" "string type" [ "disney" ]
         "rgb color" [ 1 1 1 ]
         "float metallic" [ 0 ]
-        "float roughness" [ 0.1 ]
-        "float sheen" [ 1 ] 
-        "float sheentint" [ 1 ] 
-        "float clearcoat" [ 1 ] 
-        "float clearcoatgloss" [ 1 ] 
+        "float roughness" [ 0 ]
+        "float sheen" [ 0 ] 
+        "float sheentint" [ 0 ] 
+        "float clearcoat" [ 0 ] 
+        "float clearcoatgloss" [ 0 ] 
         "float speculartint" [ 0 ] 
         "float anisotropic" [ 0 ] 
         "float eta" [ 1.5 ]
-        "float spectrans" [ 0.9 ]
-        "rgb scatterdistance" [ 1 0.5 0.5 ]
+        "float spectrans" [ 0 ]
+        "rgb scatterdistance" [ 0 0 0 ]
 
     # Lights
 	# TransformBegin
@@ -31,6 +32,7 @@ WorldBegin
 
     AttributeBegin
         AreaLightSource "diffuse" "rgb L" [ 15 15 15 ]
+        Shape "plymesh" "string filename" [ "models/LightPlaneBig.000.ply" ] 
         Shape "plymesh" "string filename" [ "models/LightPlaneBig.001.ply" ] 
     AttributeEnd
 

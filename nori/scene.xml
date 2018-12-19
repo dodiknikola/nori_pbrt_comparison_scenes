@@ -5,6 +5,20 @@
         <integer name="maxdepth" value="65"/>
     </integrator>
 
+    <!--
+	<camera type="realistic">
+		<float name="fov" value="30" />
+		<transform name="toWorld" >
+            <lookat origin="50, 50, 20" target="0, 0, 0" up="0, 1, 0"/>
+		</transform>
+
+        <integer name="width" value="720" />
+        <integer name="height" value="720" />
+        <float name="lensradius" value="2"/>
+        <float name="focaldistance" value="75"/>
+        <rfilter type="tent"/>
+	</camera>
+    -->
 	<camera type="perspective">
 		<float name="fov" value="30" />
 		<transform name="toWorld" >
@@ -13,6 +27,8 @@
 
         <integer name="width" value="720" />
         <integer name="height" value="720" />
+        <float name="lensradius" value="2"/>
+        <float name="focaldistance" value="75"/>
         <rfilter type="tent"/>
 	</camera>
 
@@ -29,6 +45,12 @@
     -->
 
 	<mesh type="obj">
+		<string name="filename" value="models/LightPlaneBig.000.obj"/>
+		<emitter type="area">
+			<color name="radiance" value="15 15 15"/>
+		</emitter>
+	</mesh>
+	<mesh type="obj">
 		<string name="filename" value="models/LightPlaneBig.001.obj"/>
 		<emitter type="area">
 			<color name="radiance" value="15 15 15"/>
@@ -39,18 +61,18 @@
 	<mesh type="obj" >
 		<string name="filename" value="models/SolidModel.obj" />
         <bsdf type="disney" id="Material">
-            <color name="baseColor" value="1, 1, 1"/>
+            <color name="color" value="1, 1, 1"/>
             <float name="metallic" value="0"/>
-            <float name="roughness" value="0.1"/>
-            <float name="sheen" value="1"/>
-            <float name="sheenTint" value="1"/>
-            <float name="clearcoat" value="1"/>
-            <float name="clearcoatGloss" value="1"/>
-            <float name="specularTint" value="0"/>
+            <float name="roughness" value="0"/>
+            <float name="sheen" value="0"/>
+            <float name="sheentint" value="0"/>
+            <float name="clearcoat" value="0"/>
+            <float name="clearcoatgloss" value="0"/>
+            <float name="speculartint" value="0"/>
             <float name="anisotropic" value="0"/>
             <float name="eta" value="1.5"/>
-            <float name="specTrans" value="0.9"/>
-            <color name="scatterDistance" value="1, 0.5, 0.5"/>
+            <float name="spectrans" value="0"/>
+            <color name="scatterdistance" value="0, 0, 0"/>
         </bsdf>
 	</mesh>
 
