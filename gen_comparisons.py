@@ -204,8 +204,9 @@ def generate_all_scenes(spp):
     for test_case_name, test_case in test_cases.items():
         generate_scene(test_case_name, test_case, spp)
 
-generate_all_scenes(1024)
+# generate_all_scenes(1024)
 
-# test_case_name = 'transmission_rough'
-# test_case = test_cases[test_case_name]
-# generate_scene(test_case_name, test_case, 512)
+test_case_names = ['sss_spec']
+for test_case_name in test_case_names:
+    test_case = test_cases[test_case_name]
+    generate_scene(test_case_name, test_case, 4096)

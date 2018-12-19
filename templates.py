@@ -17,6 +17,7 @@ WorldBegin
     # Lights
     AttributeBegin
         AreaLightSource "diffuse" "rgb L" [ 15 15 15 ]
+        Shape "plymesh" "string filename" [ "models/LightPlaneBig.000.ply" ] 
         Shape "plymesh" "string filename" [ "models/LightPlaneBig.001.ply" ] 
     AttributeEnd
 
@@ -75,6 +76,12 @@ nori_template = \
 	</sampler>
 
     <!-- Lights -->
+	<mesh type="obj">
+		<string name="filename" value="models/LightPlaneBig.000.obj"/>
+		<emitter type="area">
+			<color name="radiance" value="15 15 15"/>
+		</emitter>
+	</mesh>
 	<mesh type="obj">
 		<string name="filename" value="models/LightPlaneBig.001.obj"/>
 		<emitter type="area">

@@ -4,6 +4,7 @@ import os
 # get the path where the blend file is located
 basedir = bpy.path.abspath('//')
 export_to = 'nori'
+export_dir = export_to + '_autogen'
 
 # deselect all objects
 bpy.ops.object.select_all(action='DESELECT')    
@@ -20,17 +21,17 @@ for ob in scene.objects:
         # export the currently selected object to its own file based on its name
         if export_to == 'nori':
             bpy.ops.export_scene.obj(
-                    filepath=os.path.join(basedir, export_to, 'models', ob.name + '.obj'),
+                    filepath=os.path.join(basedir, export_dir, 'models', ob.name + '.obj'),
                     use_selection=True,
                     use_normals=True,
                     use_uvs=True,
                     use_mesh_modifiers=True,
                     use_materials=False,
-                    use_triangles=True
+                    use_triangles=False
                     )
         elif export_to == 'pbrt':
             bpy.ops.export_mesh.ply(
-                    filepath=os.path.join(basedir, export_to, 'models', ob.name + '.ply'),
+                    filepath=os.path.join(basedir, export_dir, 'models', ob.name + '.ply'),
                     use_normals=True,
                     use_mesh_modifiers=True,
                     use_uv_coords=True
